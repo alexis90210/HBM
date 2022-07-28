@@ -12,12 +12,12 @@
           </p>
           
           <div class="buttons">
-            <NuxtLink :to="{path:'/dashboard/auth'}" style="text-decoration: none !important;">
+            <nuxt-link to="/Dahoboard/Auth" style="text-decoration: none !important;">
               <div class="button-start">
               <span>Commencez !</span>
               <i class="pi pi-arrow-right"></i>
             </div>
-            </NuxtLink>
+            </nuxt-link>
           </div>
 
         </div>
@@ -32,7 +32,7 @@
 <script>
 import Button from 'primevue/button';
 export default {
-  name:'home',
+  name:'auth',
   components: { Button },
   data() {
     return {};
