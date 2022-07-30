@@ -7,11 +7,36 @@
       </div>
     </div>
     <div class="card-stats">
-        <div class="card1">
-
+        <div class="card">
+            <div>
+              <p class="text-white hsmall" style="margin:0; padding:0">Commande</p>
+              <p class="text-white fsbig"  style="margin:0; margin-top: 8px;">1657</p>
+            </div>
+            <i class="mdi mdi-shield-check-outline fsbig text-white" style="opacity:.7"></i>
         </div>
-         <div class="card2">
 
+        <div class="card">
+            <div>
+              <p class="text-white hsmall" style="margin:0; padding:0">V&eacute;hicules</p>
+              <p class="text-white fsbig"  style="margin:0; margin-top: 8px;">17</p>
+            </div>
+            <i class="mdi mdi-train-car fsbig text-white" style="opacity:.7"></i>
+        </div>
+
+        <div class="card">
+            <div>
+              <p class="text-white hsmall" style="margin:0; padding:0">Trajets</p>
+              <p class="text-white fsbig"  style="margin:0; margin-top: 8px;">8</p>
+            </div>
+            <i class="mdi mdi-layers-search-outline fsbig text-white" style="opacity:.7"></i>
+        </div>
+
+        <div class="card">
+            <div>
+              <p class="text-white hsmall" style="margin:0; padding:0">Agents</p>
+              <p class="text-white fsbig"  style="margin:0; margin-top: 8px;">170</p>
+            </div>
+            <i class="mdi mdi-account-supervisor fsbig text-white" style="opacity:.7"></i>
         </div>
     </div>
 
@@ -40,7 +65,7 @@ export default {
     return {
       series: [
         {
-          name: "Sales",
+          name: "Billet",
           data: [4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5, 13, 9, 17, 2, 7, 5],
         },
       ],
@@ -135,6 +160,7 @@ export default {
 .chart-commande {
   padding: 10px;
   padding-top: 20px;
+  padding-bottom: 30px;
 }
 
 .card-stats {
@@ -143,15 +169,26 @@ export default {
   padding: 10px;
   padding-top: 20px;
   width: 100%;
+  gap: 20px;
 }
-.card1 {
+.card {
+  display: flex;
+  justify-content: space-between;
   border-radius: 8px;
-  width: 40%;
+  width: 30%;
+  padding:10px;
  background: #1565C0;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to left, #1565C0, #1565C0);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to left, #1565C0, #4b0c0a90); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   
 }
 
+.fsbig {
+  font-size: 27px;
+  font-weight: 600;
+}
+.hsmall {
+  font-size: 13px;
+}
 
 </style>

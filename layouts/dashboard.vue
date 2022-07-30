@@ -35,14 +35,14 @@
 
         <div class="mleft">
             <div class="bshadow box-content">
-                <nuxt-link to="" style="text-decoration:none">
+                <nuxt-link to="/dashboard/Agence" style="text-decoration:none">
                     <div class="hmenu">
                     <i class="icons mdi mdi-monitor-dashboard"></i>
                     <span>Tableau de bord</span>
                 </div>
                 </nuxt-link>
 
-                 <nuxt-link to="" style="text-decoration:none">
+                 <nuxt-link to="/dashboard/Agence/commande" style="text-decoration:none">
                     <div class="hmenu">
                     <i class="icons mdi mdi-text-box-check-outline"></i>
                     <span>Creer une commande</span>
@@ -50,7 +50,7 @@
                 </nuxt-link>
 
 
-                <nuxt-link to="" style="text-decoration:none">
+                <nuxt-link to="/dashboard/Agence/trajet" style="text-decoration:none">
                     <div class="hmenu">
                        <i class="icons mdi mdi-layers-search-outline"></i>
                        <span>Recherche de trajets</span>

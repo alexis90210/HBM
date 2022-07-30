@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'HBM',
+    title: 'HBM | Système complet de gestion des réservations de votre flotte d\'autocars et bus',
     htmlAttrs: {
       lang: 'en'
     },
