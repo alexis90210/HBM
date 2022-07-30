@@ -2,7 +2,9 @@
   <div>
     <div class="hheader bshadow">
       <div class="logo">
-        <img alt="logo" src="@/assets/HBM.png" height="30" class="mr-2" />
+        <nuxt-link to="/dashboard/Agence">
+          <img alt="logo" src="@/assets/HBM.png" height="30" class="mr-2" />
+        </nuxt-link>
       </div>
 
       <div>
@@ -57,7 +59,7 @@
                     </div>
                 </nuxt-link>
 
-                 <nuxt-link to="" style="text-decoration:none">
+                 <nuxt-link to="/dashboard/Agence/liste/commande" style="text-decoration:none">
                     <div class="hmenu">
                        <i class="icons mdi mdi-shield-check-outline"></i>
                        <span>Commandes</span>
@@ -334,4 +336,35 @@ background: linear-gradient(to left, #1565C0, #04095390); /* W3C, IE 10+/ Edge, 
 .box-right > * {
     direction: ltr;
 }
+* {
+  font-family: 'Ubuntu';
+}
+
+/* customize scrollbar css */
+	::-webkit-scrollbar{
+		width:10px;
+		background-color:#ffffff;
+	}
+	::-webkit-scrollbar:horizontal{
+		height:12px;
+	}
+	::-webkit-scrollbar-track{
+		border:1px #ffffff solid;
+		border-radius:10px;
+		-webkit-box-shadow:0 0 6px #efe9e9b6 inset;
+	}
+	::-webkit-scrollbar-thumb{
+		background-color:rgba(12, 9, 9, 0.148);
+		border:1px solid #fff;
+		border-radius:10px;
+	}
+	::-webkit-scrollbar-thumb:hover{
+		background-color:rgba(12, 9, 9, 0.148);;
+		border:1px solid #ffffff;
+	}
+	::-webkit-scrollbar-thumb:active{
+		background-color:rgba(12, 9, 9, 0.148);;
+		border:1px solid #ffffff;
+	}
+
 </style>
