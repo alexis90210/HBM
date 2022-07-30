@@ -1,28 +1,157 @@
 <template>
   <div>
-    <div>
-
-          <img alt="logo" src="@/assets/HBM.png" height="40" class="mr-2" />
-
+    <div class="theader">
+      <div>
+        <p class="htitle">Tableau de bord</p>
+        <p class="subtitle">Vue globale des activit&eacute;s</p>
+      </div>
     </div>
+    <div class="card-stats">
+        <div class="card1">
+
+        </div>
+         <div class="card2">
+
+        </div>
+    </div>
+
+   <div class="chart-commande">
+     <client-only>
+      <VueApexCharts
+        type="line"
+        height="350"
+        :options="chartOptions"
+        :series="series"
+      ></VueApexCharts>
+    </client-only>
+   </div>
   </div>
 </template>
 
 <script>
-import InputText from "primevue/inputtext";
-
+import Button from "primevue/button";
+import VueApexCharts from "vue-apexcharts";
 export default {
-  components: {  },
+  components: { Button, VueApexCharts },
+  layout(context) {
+    return "dashboard";
+  },
   data() {
     return {
-    
+      series: [
+        {
+          name: "Sales",
+          data: [4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5, 13, 9, 17, 2, 7, 5],
+        },
+      ],
+      chartOptions: {
+        chart: {
+          height: 350,
+          type: "line",
+        },
+        forecastDataPoints: {
+          count: 7,
+        },
+        stroke: {
+          width: 5,
+          curve: "smooth",
+        },
+        xaxis: {
+          type: "datetime",
+          categories: [
+            "1/11/2000",
+            "2/11/2000",
+            "3/11/2000",
+            "4/11/2000",
+            "5/11/2000",
+            "6/11/2000",
+            "7/11/2000",
+            "8/11/2000",
+            "9/11/2000",
+            "10/11/2000",
+            "11/11/2000",
+            "12/11/2000",
+            "1/11/2001",
+            "2/11/2001",
+            "3/11/2001",
+            "4/11/2001",
+            "5/11/2001",
+            "6/11/2001",
+          ],
+          tickAmount: 10,
+          labels: {
+            formatter: function (value, timestamp, opts) {
+              return opts.dateFormatter(new Date(timestamp), "dd MMM");
+            },
+          },
+        },
+        title: {
+          text: "Commandes",
+          align: "left",
+          style: {
+            fontSize: "13px",
+            color: "#000000aa",
+          },
+        },
+        fill: {
+          type: "gradient",
+          gradient: {
+            shade: "dark",
+            gradientToColors: ["#FDD835"],
+            shadeIntensity: 1,
+            type: "horizontal",
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [0, 100, 100, 100],
+          },
+        },
+        yaxis: {
+          min: -10,
+          max: 40,
+        },
+      },
     };
   },
 };
 </script>
 
 <style>
-.bshadow{
-    box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+.htitle {
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
 }
+.subtitle {
+  font-size: 12px;
+  padding: 0;
+}
+.theader {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.184);
+  border-bottom-style: inset;
+  padding: 10px;
+  padding-left: 25px;
+  padding-top: 25px;
+}
+.chart-commande {
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.card-stats {
+  display: flex;
+  height: 100px;
+  padding: 10px;
+  padding-top: 20px;
+  width: 100%;
+}
+.card1 {
+  border-radius: 8px;
+  width: 40%;
+ background: #1565C0;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #1565C0, #1565C0);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #1565C0, #4b0c0a90); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+
+
 </style>

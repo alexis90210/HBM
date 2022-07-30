@@ -20,6 +20,7 @@ export default {
       { rel: 'icon', sizes:'16x16', type:'image/png', href: '/favicon/favicon-16x16.png' },
       { rel: 'manifest', href: '/favicon/site.webmanifest' },
       { rel: 'mask-icon', color:'#5bbad5', href: '/favicon/safari-pinned-tab.svg' },
+      { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css' },
     ]
   },
 
