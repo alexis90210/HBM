@@ -66,7 +66,7 @@
                     </div>
                 </nuxt-link>
 
-                <nuxt-link to="" style="text-decoration:none">
+                <nuxt-link to="/dashboard/Agence/bagage-colis" style="text-decoration:none">
                     <div class="hmenu">
                        <i class="icons mdi mdi-bag-personal"></i>
                        <span>Bagages et colis</span>

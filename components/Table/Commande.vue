@@ -83,19 +83,31 @@
       <Column> 
        <template #body="slotProps">
         <div :id="slotProps.index">
-           <Button label="Bagages" class="p-button-primary" @click="openModalBagage"></Button>
+           <Button label="Bagages" class="p-button-primary" @click="displayModalBagage = true"></Button>
         </div>
        </template>
       </Column>
     </DataTable>
 
-    <Dialog header="Header" v-model:visible="displayModalBagage" :breakpoints="{'960px': '75vw', '640px': '90vw'}" :style="{width: '50vw'}" :modal="true">
-            <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <Dialog header="Bagages" :visible="displayModalBagage" :breakpoints="{'960px': '75vw', '640px': '90vw'}" :style="{width: '50vw'}" :modal="true">
+            <DataTable
+      :paginator="true"
+      ref="Bagages"
+      :rows="10"
+      :value="Bagages"
+      paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+      :rowsPerPageOptions="[5, 10, 25]"
+      currentPageReportTemplate="Bagages {first} / {last} sur {totalRecords} Bagages"
+      responsiveLayout="scroll"
+    >
+    <Column field="Qtite" header="Qtite"> </Column>
+    <Column field="Nom" header="Nom"> </Column>
+    <Column field="Description" header="Description"> </Column>
+    <Column field="Fragilite" header="Fragilite"> </Column>
+    </DataTable>
+            
             <template #footer>
-                <Button label="No" icon="pi pi-times" @click="closeModal" class="p-button-text"/>
-                <Button label="Yes" icon="pi pi-check" @click="closeModal" autofocus />
+                <Button label="Fermer" icon="pi pi-times" @click="displayModalBagage = false" autofocus />
             </template>
         </Dialog>
     
@@ -122,9 +134,19 @@ export default {
   },
   data() {
     return {
+      
       searchkey: "",
       commandsFiltered: [],
       displayModalBagage:false,
+      Bagages:[
+        {
+
+          Qtite: "2",
+          Nom: "Sac",
+          Description: "Noire",
+          Fragilite: "F",
+        },
+      ],
       Commandes: [
         {
 
@@ -163,9 +185,7 @@ export default {
       );
       console.log(this.commandsFiltered);
     },
-    openModalBagage() {
-            this.displayModalBagage = true;
-        },
+   
   },
   computed: {},
 };
