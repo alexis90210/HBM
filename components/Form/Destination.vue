@@ -4,7 +4,7 @@
       <template #start>
         <Button
           label="Nouveau"
-          @click="$router.push('/dashboard/Agence/envoie-bagage')"
+          @click="$router.push('/dashboard/Agence/nouvelle-destination')"
           icon="pi pi-plus"
           class="p-button-success mr-2"
         />
@@ -26,19 +26,19 @@
       <span class="p-input-icon-left">
         <i class="pi pi-search"></i>
         <InputText
-          placeholder="Cherchez un bagage/colis"
+          placeholder="Cherchez une destination"
           v-model="searchkey"
           @input="searchIt"
         />
       </span>
     </div>
     <DataTable
-      v-if="bagageColisFiltered.length > 0 && searchkey != ''"
+      v-if="searchkey != ''"
       :paginator="true"
-      ref="BagageColis"
-      :selection="selectedBagages"
+      ref="Destinations"
+      :selection="selectedDestination"
       :rows="10"
-      :value="bagageColisFiltered"
+      :value="destinationFiltered"
       paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
       :rowsPerPageOptions="[5, 10, 25]"
       currentPageReportTemplate="Bagage/Colis {first} / {last} sur {totalRecords} Bagage/Colis"
@@ -51,32 +51,25 @@
           <Button
             label="Exporter en CSV"
             class="p-button-warning text-white"
-            @click="$refs.BagageColis.exportCSV()"
+            @click="$refs.Destinations.exportCSV()"
           ></Button>
         </div>
       </template>
-      <Column field="Qtite" header="Qtite"> </Column>
-      <Column field="Nom" header="Nom"> </Column>
-      <Column field="Description" header="Description"> </Column>
-      <Column field="Fragilite" header="Fragilite"> </Column>
-      <Column field="Proprietaire" header="Proprietaire"></Column>
-      <Column field="mobile" header="Mobile"></Column>
-      <Column field="Trajet" header="Trajet"></Column>
-      <Column field="Depart" header="Depart"></Column>
-      <Column field="Vehicule" header="Vehicule"></Column>
-      <Column field="Etat" header="Etat"></Column>
+      <Column field="Code" header="Code"> </Column>
+      <Column field="Titre" header="Titre"> </Column>
+      <Column field="Ville" header="Ville"> </Column>
     </DataTable>
 
     <DataTable
       v-else
       :paginator="true"
-      ref="BagageColis"
-      :selection="selectedBagages"
+      ref="Destinations"
+      :selection="selectedDestination"
       :rows="10"
-      :value="Bagages"
+      :value="Destinations"
       paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
       :rowsPerPageOptions="[5, 10, 25]"
-      currentPageReportTemplate="BagageColis {first} / {last} sur {totalRecords} BagageColis"
+      currentPageReportTemplate="Destinations {first} / {last} sur {totalRecords} Destinations"
       responsiveLayout="scroll"
     >
       <template #header>
@@ -84,52 +77,44 @@
           <Button
             label="Exporter en CSV"
             class="p-button-warning text-white"
-            @click="$refs.BagageColis.exportCSV()"
+            @click="$refs.Destinations.exportCSV()"
           ></Button>
         </div>
       </template>
 
-      <Column field="Qtite" header="Qtite"> </Column>
-      <Column field="Nom" header="Nom"> </Column>
-      <Column field="Description" header="Description"> </Column>
-      <Column field="Fragilite" header="Fragilite"> </Column>
-      <Column field="Proprietaire" header="Proprietaire"></Column>
-      <Column field="mobile" header="Mobile"></Column>
-      <Column field="Trajet" header="Trajet"></Column>
-      <Column field="Depart" header="Depart"></Column>
-      <Column field="Vehicule" header="Vehicule"></Column>
-      <Column field="Etat" header="Etat"></Column>
+      <Column field="Code" header="Code"> </Column>
+      <Column field="Titre" header="Titre"> </Column>
+      <Column field="Ville" header="Ville"> </Column>
     </DataTable>
 
  
     <Dialog
       header="Importation excel"
-      :visible="displayModalImportBagage"
+      :visible="displayModalImportDestination"
       :breakpoints="{ '960px': '75vw', '640px': '90vw' }"
       :style="{ width: '50vw' }"
       :modal="true"
     >
       <DataTable
         :paginator="true"
-        ref="Bagages"
+        ref="Destinations"
         :rows="10"
-        :value="Bagages"
+        :value="Destinations"
         paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
         :rowsPerPageOptions="[5, 10, 25]"
-        currentPageReportTemplate="Bagages {first} / {last} sur {totalRecords} Bagages"
+        currentPageReportTemplate="Destinations {first} / {last} sur {totalRecords} Destinations"
         responsiveLayout="scroll"
       >
-        <Column field="Qtite" header="Qtite"> </Column>
-        <Column field="Nom" header="Nom"> </Column>
-        <Column field="Description" header="Description"> </Column>
-        <Column field="Fragilite" header="Fragilite"> </Column>
+        <Column field="Code" header="Code"> </Column>
+      <Column field="Titre" header="Titre"> </Column>
+      <Column field="Ville" header="Ville"> </Column>
       </DataTable>
 
       <template #footer>
         <Button
           label="Fermer"
           icon="pi pi-times"
-          @click="displayModalImportBagage = false"
+          @click="displayModalImportDestination = false"
           autofocus
         />
       </template>
@@ -166,58 +151,42 @@ export default {
   data() {
     return {
         dateTime:null,
-      selectedBagages: [],
+      selectedDestination: [],
       searchkey: "",
-      bagageColisFiltered: [],
-      displayModalImportBagage: false,
-      displayModalEnregBagage: false,
-      Bagages: [
+      destinationFiltered: [],
+      displayModalImportDestination: false,
+      displayModalEnregDestination: false,
+      Destinations: [
         {
-          Qtite: "2",
-          Nom: "Lit",
-          Proprietaire: "Ngoyi alexis",
-          Description: "Noire",
-          Fragilite: "NF",
-          Trajet: "BZVPNR",
-          Depart: "12/07/2022 06:07",
-          Vehicule: "343",
-          Etat: "Paye",
-          mobile: "069500886",
+          Code: "BZV",
+          Titre: "Brazzavile",
+          Ville: "Brazzavile"
         },
         {
-          Qtite: "1",
-          Nom: "TV",
-          Description: "Ecran plat",
-          Fragilite: "F",
-          Proprietaire: "Ngoyi Joseph",
-          Trajet: "BZVPNR",
-          Depart: "12/07/2022 06:07",
-          Vehicule: "343",
-          Etat: "Paye",
-          mobile: "069500886",
+            Code: "BZV",
+          Titre: "Brazzavile",
+          Ville: "Brazzavile"
         },
         {
-          Qtite: "14",
-          Nom: "Pagnes",
-          Description: "Blue",
-          Fragilite: "NF",
-          Proprietaire: "Ngoyi Junior",
-          Trajet: "BZVPNR",
-          Depart: "12/07/2022 06:07",
-          Vehicule: "343",
-          Etat: "Paye",
-          mobile: "069500886",
+            Code: "BZV",
+          Titre: "Brazzavile",
+          Ville: "Brazzavile"
         },
+        {
+            Code: "BZV",
+          Titre: "Brazzavile",
+          Ville: "Brazzavile"
+        }
       ],
     };
   },
   methods: {
     searchIt() {
-      this.bagageColisFiltered = this.Bagages.filter(
+      this.destinationFiltered = this.Destinations.filter(
         (item) =>
-          item.Nom.toLowerCase().indexOf(this.searchkey.toLowerCase()) > -1
+          item.Titre.toLowerCase().indexOf(this.searchkey.toLowerCase()) > -1
       );
-      console.log(this.bagageColisFiltered);
+      console.log(this.destinationFiltered);
     },
   },
   computed: {},

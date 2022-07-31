@@ -3,7 +3,7 @@ export default {
   head: {
     title: 'HBM | Système complet de gestion des réservations de votre flotte d\'autocars et bus',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'fr'
     },
     meta: [
       { charset: 'utf-8' },

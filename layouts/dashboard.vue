@@ -44,13 +44,28 @@
                 </div>
                 </nuxt-link>
 
+                <nuxt-link to="/dashboard/Agence/liste/commande" style="text-decoration:none">
+                    <div class="hmenu">
+                       <i class="icons mdi mdi-shield-check-outline"></i>
+                       <span>Billets Vendus</span>
+                    </div>
+                </nuxt-link>
+
                  <nuxt-link to="/dashboard/Agence/commande" style="text-decoration:none">
                     <div class="hmenu">
                     <i class="icons mdi mdi-text-box-check-outline"></i>
-                    <span>Creer une commande</span>
+                    <span>Vente Billet</span>
                 </div>
                 </nuxt-link>
 
+                <nuxt-link to="/dashboard/Agence/embarquement" style="text-decoration:none">
+                    <div class="hmenu">
+                    <i class="icons mdi mdi-flag-outline"></i>
+                    <span>Embarquement</span>
+                </div>
+                </nuxt-link>
+
+                
 
                 <nuxt-link to="/dashboard/Agence/trajet" style="text-decoration:none">
                     <div class="hmenu">
@@ -59,12 +74,14 @@
                     </div>
                 </nuxt-link>
 
-                 <nuxt-link to="/dashboard/Agence/liste/commande" style="text-decoration:none">
+                 <nuxt-link to="/dashboard/Agence/configuration-trajet" style="text-decoration:none">
                     <div class="hmenu">
-                       <i class="icons mdi mdi-shield-check-outline"></i>
-                       <span>Commandes</span>
+                       <i class="icons mdi mdi-road-variant"></i>
+                       <span>Configuration des trajets</span>
                     </div>
                 </nuxt-link>
+
+                 
 
                 <nuxt-link to="/dashboard/Agence/bagage-colis" style="text-decoration:none">
                     <div class="hmenu">
@@ -73,28 +90,23 @@
                     </div>
                 </nuxt-link>
 
-                <nuxt-link to="" style="text-decoration:none">
+                <nuxt-link to="/dashboard/Agence/destination" style="text-decoration:none">
                     <div class="hmenu">
                        <i class="icons mdi mdi-bus-marker"></i>
                        <span>Destinations</span>
                     </div>
                 </nuxt-link>
 
-                <nuxt-link to="" style="text-decoration:none">
-                    <div class="hmenu">
-                       <i class="icons mdi mdi-road-variant"></i>
-                       <span>Configuration des trajets</span>
-                    </div>
-                </nuxt-link>
+               
 
-                <nuxt-link to="" style="text-decoration:none">
+                <nuxt-link to="/dashboard/Agence/vehicule" style="text-decoration:none">
                     <div class="hmenu">
                        <i class="icons mdi mdi-train-car"></i>
                        <span>Vehicules</span>
                     </div>
                 </nuxt-link>
 
-                <nuxt-link to="" style="text-decoration:none">
+                <nuxt-link to="/dashboard/Agence/passagers" style="text-decoration:none">
                     <div class="hmenu">
                        <i class="icons mdi mdi-car-child-seat"></i>
                        <span>Passagers</span>
@@ -366,5 +378,10 @@ background: linear-gradient(to left, #1565C0, #04095390); /* W3C, IE 10+/ Edge, 
 		background-color:rgba(12, 9, 9, 0.148);;
 		border:1px solid #ffffff;
 	}
-
+.p-inputtext,
+.p-autocomplete,
+.p-password,
+.p-button {
+  height: 45px;
+}
 </style>
